@@ -40,7 +40,8 @@ The CLI never sends the receipt. Read it before sharing. Keep the generated `val
 5. Did you run the same `validation_id` again after a change?
 6. Which missing check would block continued use?
 
-Use the standalone repository's **Real audit feedback** issue form when it is published. Never attach Pine source or raw CSV unless you independently intend to make them public.
+Use the standalone repository's **Real audit feedback** issue form: https://github.com/Jiangki/backtestgate/issues/new/choose  
+Never attach Pine source or raw CSV unless you independently intend to make them public.
 
 ## Maintainer evidence ledger
 
