@@ -1,0 +1,7 @@
+*.html
+validation-receipt*.json
+/report.json
+/report.md
+*.egg-info/
+build/
+dist/

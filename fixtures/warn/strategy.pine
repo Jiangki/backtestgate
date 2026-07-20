@@ -1,0 +1,20 @@
+//@version=6
+strategy(
+    "Fragile limit example",
+    overlay = true,
+    calc_on_every_tick = true,
+    calc_on_order_fills = true,
+    commission_value = 0,
+    slippage = 0,
+    use_bar_magnifier = false
+)
+
+fast = ta.sma(close, 5)
+slow = ta.sma(close, 20)
+realtimeWindow = timenow - time < 3600000
+
+if ta.crossover(fast, slow) and realtimeWindow
+    strategy.entry("Long", strategy.long, limit = close)
+
+if strategy.position_size > 0
+    strategy.exit("Exit", "Long", stop = close * 0.99, limit = close * 1.01)

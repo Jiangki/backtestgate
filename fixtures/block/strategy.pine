@@ -1,0 +1,29 @@
+//@version=6
+strategy(
+    "Future leak example",
+    overlay = true,
+    commission_type = strategy.commission.percent,
+    commission_value = 0.1,
+    slippage = 2,
+    calc_on_every_tick = false,
+    calc_on_order_fills = false,
+    use_bar_magnifier = true
+)
+
+futureDailyClose = request.security(
+    syminfo.tickerid,
+    "D",
+    close,
+    lookahead = barmerge.lookahead_on
+)
+
+if close > futureDailyClose
+    strategy.entry("Long", strategy.long)
+
+if strategy.position_size > 0
+    strategy.exit(
+        "Exit",
+        "Long",
+        stop = strategy.position_avg_price * 0.98,
+        limit = strategy.position_avg_price * 1.03
+    )

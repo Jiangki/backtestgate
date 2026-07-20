@@ -1,0 +1,13 @@
+{
+  "validation_id": "22222222-2222-4222-8222-222222222222",
+  "symbol": "NASDAQ:AAPL",
+  "timeframe": "5m",
+  "chart_type": "heikin_ashi",
+  "commission_value": 0,
+  "slippage_ticks": 0,
+  "bar_magnifier": false,
+  "limit_fill_assumption_ticks": 0,
+  "calc_on_every_tick": true,
+  "calc_on_order_fills": true,
+  "stress_cost_per_trade": 10.0
+}

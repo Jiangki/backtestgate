@@ -1,0 +1,77 @@
+name: Real audit feedback
+description: Report a completed BacktestGate run without sharing strategy or trade data
+title: "[validation] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for testing BacktestGate on your own export.
+        Do not paste Pine source, raw CSV, symbols, prices, or P&L.
+        A privacy-safe receipt can be generated with:
+        `backtestgate audit my-audit --share-output validation-receipt.json`
+  - type: dropdown
+    id: completed
+    attributes:
+      label: Did you complete an audit using your own TradingView export?
+      options:
+        - "Yes"
+        - "No — input/onboarding blocked me"
+    validations:
+      required: true
+  - type: dropdown
+    id: gate
+    attributes:
+      label: Result gate
+      options:
+        - PASS
+        - WARN
+        - BLOCK
+        - No result
+    validations:
+      required: true
+  - type: textarea
+    id: receipt
+    attributes:
+      label: Privacy-safe validation receipt
+      description: Paste validation-receipt.json after reading it, or write "not shared".
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: friction
+    attributes:
+      label: What caused the most friction?
+      description: Describe export, manifest, installation, or report friction without sensitive data.
+    validations:
+      required: true
+  - type: dropdown
+    id: acted
+    attributes:
+      label: Did a finding cause a code or configuration change?
+      options:
+        - "Yes"
+        - "No"
+        - "Not yet"
+    validations:
+      required: true
+  - type: dropdown
+    id: repeat
+    attributes:
+      label: Did you rerun the same validation_id after a change?
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: false_positive
+    attributes:
+      label: Suspected false positive or missing check
+      description: Include only the minimum non-sensitive explanation.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I checked that this issue contains no private Pine source or raw trade data.
+          required: true

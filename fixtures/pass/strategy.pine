@@ -1,0 +1,33 @@
+//@version=6
+strategy(
+    "Confirmed HTF example",
+    overlay = true,
+    commission_type = strategy.commission.percent,
+    commission_value = 0.1,
+    slippage = 2,
+    calc_on_every_tick = false,
+    calc_on_order_fills = false,
+    use_bar_magnifier = true
+)
+
+confirmedDailyClose = request.security(
+    syminfo.tickerid,
+    "D",
+    close[1],
+    lookahead = barmerge.lookahead_on
+)
+
+fast = ta.ema(close, 20)
+slow = ta.ema(close, 50)
+longCondition = ta.crossover(fast, slow) and close > confirmedDailyClose
+
+if longCondition
+    strategy.entry("Long", strategy.long)
+
+if strategy.position_size > 0
+    strategy.exit(
+        "Exit",
+        "Long",
+        stop = strategy.position_avg_price * 0.98,
+        limit = strategy.position_avg_price * 1.04
+    )
