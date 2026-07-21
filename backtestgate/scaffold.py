@@ -44,7 +44,7 @@ This directory was created locally. BacktestGate will not upload its contents.
 5. From the BacktestGate project directory, run:
      python3 -m backtestgate audit "{audit_dir}" --output report.html
 
-6. To create a privacy-safe receipt for validation feedback:
+6. To create a privacy-safe receipt for public feedback:
      python3 -m backtestgate audit "{audit_dir}" --share-output validation-receipt.json
 
 The receipt omits source code, symbol, timeframe, paths, P&L, and individual trades.

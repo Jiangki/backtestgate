@@ -7,7 +7,6 @@
 - Reserve `BLOCK` for high-confidence correctness failures; uncertain checks are `WARN`.
 - Every rule needs a stable ID, evidence, remediation hint, and fixture/test coverage.
 - Do not describe PASS as strategy certification or future profitability.
-- Do not record fixtures, maintainer runs, stars, or downloads as external use evidence.
 
 ## Setup
 

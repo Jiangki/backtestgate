@@ -4,7 +4,7 @@ Offline trust gate for **TradingView Pine Script backtests**.
 
 BacktestGate reads a Pine strategy, TradingView CSV exports, and the actual run assumptions. It then produces a deterministic `PASS`, `WARN`, or `BLOCK` report with line-level evidence and small, explainable robustness checks.
 
-> Status: open-source pre-release experiment for demand validation. It is not a strategy generator, profitability score, certification, or investment recommendation.
+> Status: alpha (pre-release). It is not a strategy generator, profitability score, certification, or investment recommendation.
 
 ## What the demo shows
 
@@ -29,8 +29,9 @@ The tool is read-only and offline. It does not execute Pine, connect to TradingV
 ## Run the fixtures
 
 ```bash
-# In github-hot-tracker:
-cd experiments/backtestgate
+git clone https://github.com/Jiangki/backtestgate.git
+cd backtestgate
+python3 -m pip install -e .
 
 # Clean sample: exit 0
 python3 -m backtestgate audit fixtures/pass
@@ -46,13 +47,6 @@ python3 -m backtestgate audit fixtures/block --output block-report.html
 ```
 
 Open `block-report.html` in any browser. No server is required.
-
-Optional editable install:
-
-```bash
-python3 -m pip install -e .
-backtestgate audit fixtures/warn
-```
 
 ## Expected fixture results
 
@@ -71,7 +65,7 @@ python3 -m backtestgate audit fixtures/warn --fail-on warn
 
 ## Audit your own export
 
-Initialize one private local directory:
+Initialize a local audit directory:
 
 ```bash
 python3 -m backtestgate init my-audit
@@ -190,7 +184,7 @@ The output file format is inferred from its suffix.
 
 Full reports intentionally include code evidence and financial metrics for local diagnosis. Do not attach them to a public issue unless you intend to disclose that data.
 
-For validation feedback, generate a minimized receipt instead:
+For public feedback, generate a minimized receipt instead:
 
 ```bash
 python3 -m backtestgate audit my-audit \
@@ -199,7 +193,7 @@ python3 -m backtestgate audit my-audit \
 
 The receipt contains the gate, dimension statuses, rule IDs, broad sample-size buckets, tool version, and random `validation_id`. It omits Pine source, symbols, timeframes, paths, P&L, prices, and individual trades. The CLI never uploads it; inspect the JSON before sharing.
 
-See [VALIDATION.md](VALIDATION.md) for the feedback protocol and evidence-counting rules. Fixtures and maintainer runs do not count as external use.
+See [VALIDATION.md](VALIDATION.md) for how to report feedback safely.
 
 ## Important limits
 

@@ -1,6 +1,6 @@
 name: Real audit feedback
 description: Report a completed BacktestGate run without sharing strategy or trade data
-title: "[validation] "
+title: "[feedback] "
 body:
   - type: markdown
     attributes:
